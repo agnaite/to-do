@@ -1,0 +1,31 @@
+
+<div class="wrapper-add">
+	<section id="add">
+	  <form action="/" method="post">
+	    <textarea class="form-control" rows="3" name="content" placeholder="Your task&hellip;"></textarea><br>
+	    <input type="submit" value="Add Task" class="btn btn-primary btn-add">
+	  </form>
+	</section>
+</div>
+ 
+ <div class="wrapper-tasks">
+	<div class="tasks">
+		<% @tasks.each do |task| %>
+			<div class="task">
+			  <article <%= 'class="complete"' if task.complete %>>
+			    <p class="task-content">
+			      <%= task.content %>
+			    </p>
+			    <p class="links">
+			      <a href="/<%= task.id %>/complete" <%= 'class="hidden"' if task.complete %>>🖕
+			      </a>
+			      <a href="/<%= task.id %>/complete"<%= 'class="hidden"' unless task.complete %>>🤘
+			      </a>
+			      <span><a href="/<%= task.id %>" class="edit">[edit]</a></span>
+			    </p>
+			    <p class="meta">added on <%= task.created_at.strftime("%a, %m/%d/%Y at %T") %></p>
+			  </article>
+		  </div>
+		<% end %>
+	</div>
+</div>
