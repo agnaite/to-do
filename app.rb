@@ -1,8 +1,9 @@
 require 'sinatra'
 require 'shotgun'
+require 'pg'
 require 'data_mapper'
 
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/recall.db")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
 class Task
 	include DataMapper::Resource
