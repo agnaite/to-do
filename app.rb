@@ -3,7 +3,8 @@ require 'shotgun'
 require 'pg'
 require 'data_mapper'
 
-DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+DataMapper::setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/recall.db')
+
 
 class Task
 	include DataMapper::Resource
